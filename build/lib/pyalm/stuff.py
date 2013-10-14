@@ -38,12 +38,14 @@ class Alm:
 			out2 = out.json()
 			if(len(out2) == 1):
 				stuff = out2[0]['sources']
-				stuff2 = self.makedf(stuff)
+				# stuff = out2[0]['sources']
+				# stuff2 = self.makedf(stuff)
 			else:
 				stuff = []
 				for x in out2:
 					tmp = x['sources']
-					stuff.append(self.makedf(tmp))
+					stuff.append(tmp)
+					# stuff.append(self.makedf(tmp))
 				stuff2 = stuff
 		  	return stuff2
 

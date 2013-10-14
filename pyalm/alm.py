@@ -36,7 +36,7 @@ def alm(doi = None, pmid = None, pmcid = None, mdid = None, url = 'http://alm.pl
 	# else: 
 	# 	id2 = delNone(id)
 
-	if(len(id2.values()[0]) == 1): # PROBLEM LIES HERE, NEED TO BE ABLE TO COUNT HOW MANY IDS WERE PASSED IN
+	if(id2.values()[0][0].__len__() == 1):
 		id2 = id2.values()[0]
 	else:
 		id2 = ','.join(id2.values()[0])
@@ -56,9 +56,8 @@ def alm(doi = None, pmid = None, pmcid = None, mdid = None, url = 'http://alm.pl
 		out = requests.get(url, params = payload)
 		out2 = out.json()
 		if(len(out2) == 1):
-			return out2
-			# stuff = out2[0]['sources']
-			# stuff2 = makedf(stuff)
+			stuff = out2[0]['sources']
+			stuff2 = makedf(stuff)
 		else:
 			stuff = []
 			for x in out2:
